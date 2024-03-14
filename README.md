@@ -19,10 +19,7 @@ services:
       app_net:
         ipv4_address: 10.20.52.20
   surveyking:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: surveyking
+    image: mrxianyu/surveyking:latest
     container_name: surveyking
     restart: unless-stopped
     environment:
