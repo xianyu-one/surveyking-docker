@@ -22,10 +22,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set timestamp
-        id: timestamp
-        run: echo "timestamp=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -34,7 +30,7 @@ jobs:
           platforms: linux/arm64,linux/amd64
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/surveyking:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/surveyking:${{ steps.timestamp.outputs.timestamp }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/surveyking:1.6.0
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
